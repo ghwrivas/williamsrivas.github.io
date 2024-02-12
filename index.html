@@ -8,6 +8,11 @@
 <body>
     <div id="log" style="font-size: xxx-large;"></div>
 <script>
+        window.addEventListener('beforeunload', function (e) {
+            const cm = 'Seguro que quieres abandonar la pagina?'
+            e.returnValue = cm;
+            return cm;
+        })
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
         function detectMetaBrowser() {
