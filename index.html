@@ -8,9 +8,10 @@
 <body>
 <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        console.log(userAgent)
         function detectMetaBrowser() {
             // Comprobar si contiene alguna cadena específica de Meta/Facebook o TikTok
-            if (userAgent.includes('FBAN') || userAgent.includes('FBAV') || userAgent.includes('TikTok')) {
+            if (userAgent.match(/FBAN|FBAV|Instagram|Tiktok/i)) {
                 return true; // Se está ejecutando dentro de la app de Meta/Facebook o TikTok
             } else {
                 return false; // No es la app de Meta/Facebook o TikTok
@@ -18,9 +19,9 @@
         }
 
         if (detectMetaBrowser()) {
-            alert("Webview "+ userAgent);
+            alert("Viene de red social");
         } else {
-            alert("Navegador " + userAgent);
+            alert("No viene de red social");
         }
     </script>
 </body>
