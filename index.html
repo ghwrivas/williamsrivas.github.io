@@ -13,6 +13,7 @@
         function detectMetaBrowser() {
             document.getElementById('log').innerHTML += userAgent;
             document.getElementById('log').innerHTML += `<br><br>Navigator standalone: ${navigator.standalone}`;
+            document.getElementById('log').innerHTML += `<br><br>clientInformation.standalone: ${window.clientInformation.standalone}`;
             // Comprobar si contiene alguna cadena específica de Meta/Facebook o TikTok
             if (userAgent.match(/FBAN|FBAV|Instagram|Tiktok/i)) {
                 return true; // Se está ejecutando dentro de la app de Meta/Facebook o TikTok
