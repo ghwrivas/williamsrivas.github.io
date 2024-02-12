@@ -6,11 +6,12 @@
 </head>
 
 <body>
+    <div id="log"></div>
 <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
         function detectMetaBrowser() {
-            console.log(userAgent)
+            document.getElementById('log').innerHTML += userAgent;
             // Comprobar si contiene alguna cadena específica de Meta/Facebook o TikTok
             if (userAgent.match(/FBAN|FBAV|Instagram|Tiktok/i)) {
                 return true; // Se está ejecutando dentro de la app de Meta/Facebook o TikTok
@@ -20,10 +21,11 @@
         }
 
         if (detectMetaBrowser()) {
-            alert("Viene de red social");
+            document.getElementById('log').innerHTML += '<br>Viene de red social';
         } else {
-            alert("No viene de red social");
+            document.getElementById('log').innerHTML += '<br>No viene de red social';
         }
+        
     </script>
 </body>
 
