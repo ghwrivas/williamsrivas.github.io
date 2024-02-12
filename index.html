@@ -8,8 +8,9 @@
 <body>
 <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        console.log(userAgent)
+        
         function detectMetaBrowser() {
+            console.log(userAgent)
             // Comprobar si contiene alguna cadena específica de Meta/Facebook o TikTok
             if (userAgent.match(/FBAN|FBAV|Instagram|Tiktok/i)) {
                 return true; // Se está ejecutando dentro de la app de Meta/Facebook o TikTok
