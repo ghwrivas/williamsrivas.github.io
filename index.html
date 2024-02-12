@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div id="log"></div>
+    <div id="log" style="font-size: xxx-large;"></div>
 <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
@@ -21,9 +21,9 @@
         }
 
         if (detectMetaBrowser()) {
-            document.getElementById('log').innerHTML += '<br>Viene de red social';
+            document.getElementById('log').innerHTML += '<br><br>Viene de red social';
         } else {
-            document.getElementById('log').innerHTML += '<br>No viene de red social';
+            document.getElementById('log').innerHTML += '<br><br>No viene de red social';
         }
         
     </script>
