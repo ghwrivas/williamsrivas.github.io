@@ -29,6 +29,17 @@
         }
         
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/forge/0.10.0/forge.min.js"></script>
+        <script>
+            window.pubKey = "pubkey";
+            const generateRandomKey = (keyLength) => {
+                const tmp = CryptoJS.lib.WordArray.random(keyLength / 8).toString(); //'585e2caeb5bb532ca2cbacb6ba50368a'
+                document.getElementById('log').innerHTML += `<br><br>RamdonKey: ${tmp}`;
+            }
+        </script>
+
+    <button onclick="generateRandomKey(20)">Click Me</button>
 </body>
 
 </html>
