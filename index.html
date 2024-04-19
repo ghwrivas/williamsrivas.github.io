@@ -41,6 +41,9 @@
             const generateRandomKey = (keyLength) => {
                 const tmp = CryptoJS.lib.WordArray.random(keyLength / 8).toString(); //'585e2caeb5bb532ca2cbacb6ba50368a'
                 document.getElementById('log').innerHTML += `<br><br>RamdonKey: ${tmp}`;
+                console.log('FORGE', forge)
+                if (forge)
+                console.log('FORGE', forge.util.encodeUtf8('VALUE TO ENCRYPT'));
                 sendMessageAppParent("ok");
             }
               fetch('https://jsonplaceholder.typicode.com/todos/1')
