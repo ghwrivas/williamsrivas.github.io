@@ -34,9 +34,21 @@
         <script>
             window.pubKey = "pubkey";
             const sendMessageAppParent = (message) => {
+                if (window.webkit) {
+                    console.log('webkit')
+                    document.getElementById('log').innerHTML += '<br><br>window.webkit';
+                }
+                if (window.appInterface) {
+                    console.log('appInterface')
+                    document.getElementById('log').innerHTML += '<br><br>window.appInterface';
+                }
+                if (window.parent) {
+                    console.log('parent')
+                    document.getElementById('log').innerHTML += '<br><br>window.parent';
+                }
                 window.webkit ? window.webkit.messageHandlers.appInterface.postMessage(message) : null
                 window.appInterface ? window.appInterface.listenMessage(message): null
-                window.parent.postMessage(message);
+                window.parent ? window.parent.postMessage(message) : null
             }
             const generateRandomKey = (keyLength) => {
                 const tmp = CryptoJS.lib.WordArray.random(keyLength / 8).toString(); //'585e2caeb5bb532ca2cbacb6ba50368a'
