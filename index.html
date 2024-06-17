@@ -48,7 +48,7 @@
                 }
                 window.webkit ? window.webkit.messageHandlers.appInterface.postMessage(message) : null
                 window.appInterface ? window.appInterface.listenMessage(message): null
-                window.parent ? window.parent.postMessage(message) : null
+                window.parent ? window.parent.postMessage({ message, origin: window.location.origin}, window.location.origin) : null
             }
             const generateRandomKey = (keyLength) => {
                 const tmp = CryptoJS.lib.WordArray.random(keyLength / 8).toString(); //'585e2caeb5bb532ca2cbacb6ba50368a'
