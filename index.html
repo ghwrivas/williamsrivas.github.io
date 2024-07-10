@@ -71,21 +71,18 @@
             }
 
             const print = (divId) => {
-                var divToPrint = document.getElementById(divId);
-                var newWin = window.open('', '_blank');
-                newWin.document.open();
-                newWin.document.write('<html><head><title>Print</title>');
-                // Añadir estilos de la página principal
-                var styles = document.querySelectorAll('style, link[rel="stylesheet"]');
-                styles.forEach(style => {
-                    newWin.document.write(style.outerHTML);
-                });
-                newWin.document.write('</head><body>');
-                newWin.document.write(divToPrint.outerHTML);
-                newWin.document.write('</body></html>');
-                newWin.document.close();
-                newWin.print();
-                newWin.close();
+                const divToPrint = document.getElementById(divId);
+                if (!divToPrint) return;
+            
+                const originalContents = document.body.innerHTML;
+                document.body.innerHTML = divToPrint.innerHTML;
+                window.print();
+                document.body.innerHTML = originalContents;
+            
+                // Re-ejecutar los scripts necesarios
+                setTimeout(() => {
+                    location.reload(false);
+                }, 0);
             }
               fetch('https://jsonplaceholder.typicode.com/todos/1')
                   .then(response => response.json())
