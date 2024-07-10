@@ -70,7 +70,7 @@
                 sendMessageAppParent("ok");
             }
 
-            const print = () => {
+            const print = (divId) => {
                 var divToPrint = document.getElementById(divId);
                 var newWin = window.open('', '_blank');
                 newWin.document.open();
