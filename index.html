@@ -3,10 +3,21 @@
 
 <head>
     <meta charset="UTF-8" />
+    <style>
+        .printable {
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        /* Otros estilos que quieras aplicar */
+    </style>
 </head>
 
 <body>
     <div id="log" style="font-size: xxx-large;"></div>
+        <div id="printableDiv" class="printable">
+        <h1>Título</h1>
+        <p>Este es el contenido que quiero imprimir con estilo.</p>
+    </div>
 <script>
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         
@@ -58,12 +69,31 @@
                 console.log('FORGE', forge.util.encodeUtf8('VALUE TO ENCRYPT'));
                 sendMessageAppParent("ok");
             }
+
+            const print = () => {
+                var divToPrint = document.getElementById(divId);
+                var newWin = window.open('', '_blank');
+                newWin.document.open();
+                newWin.document.write('<html><head><title>Print</title>');
+                // Añadir estilos de la página principal
+                var styles = document.querySelectorAll('style, link[rel="stylesheet"]');
+                styles.forEach(style => {
+                    newWin.document.write(style.outerHTML);
+                });
+                newWin.document.write('</head><body>');
+                newWin.document.write(divToPrint.outerHTML);
+                newWin.document.write('</body></html>');
+                newWin.document.close();
+                newWin.print();
+                newWin.close();
+            }
               fetch('https://jsonplaceholder.typicode.com/todos/1')
                   .then(response => response.json())
                   .then(json => console.log(json))
         </script>
 
     <button onclick="generateRandomKey(32)" style="font-size: xxx-large; width: 100%;">Click Me</button>
+    <button onclick="print('printableDiv')" style="font-size: xxx-large; width: 100%;">Click Me</button>
 </body>
 
 </html>
